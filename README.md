@@ -1,23 +1,26 @@
 # NYCAirbnb
 
+NYCAirbnb
+
 🏠 Airbnb NYC 2019 — Business Intelligence Analysis
+
 📌 Project Overview
 
-This project analyzes the New York City Airbnb 2019 dataset (Kaggle) using a structured Business Intelligence approach.
+This project analyzes the New York City Airbnb 2019 dataset (Kaggle) using a structured Business Intelligence methodology.
 
-The objectives of this project are to:
+The objectives are to:
 
-Clean and validate raw listing data
+Validate and clean raw listing data
 
-Define business-oriented KPIs
+Define and justify business-oriented KPIs
 
-Prepare a reusable BI-ready dataset
+Create a reusable BI-ready analytical dataset
 
 Establish a foundation for dimensional modeling
 
-Enable dashboard integration in any BI tool
+Enable integration with any BI platform
 
-The focus is on data preparation, metric definition, and analytical rigor, rather than machine learning.
+The focus is on data preparation, metric governance, and analytical rigor, rather than machine learning.
 
 📊 Dataset
 
@@ -35,31 +38,44 @@ After cleaning:
 
 18 columns
 
-Each row represents one Airbnb listing in New York City (2019).
+Each row represents one Airbnb listing in New York City in 2019.
 
 🧹 Data Cleaning Strategy
 
-The following data preparation steps were applied:
+The data preparation pipeline applies controlled and justified transformations:
 
-Removed duplicate records
+✔ Duplicate removal
 
-Removed invalid prices (price <= 0)
+Ensures entity-level uniqueness.
 
-Trimmed extreme outliers (price > 1000)
+✔ Invalid price filtering
 
-Represents approximately 0.5% of the dataset
+Removed listings where:
 
-Improves stability of central tendency metrics
+price <= 0
+✔ Extreme outlier trimming
 
-Replaced missing reviews_per_month values with 0
+Removed listings where:
 
-Converted last_review to datetime format
+price > 1000
 
-This approach ensures analytical consistency while preserving business realism.
+Represents ~0.5% of the dataset
+
+Stabilizes central tendency metrics
+
+Reduces distortion in revenue estimation
+
+✔ Missing value handling
+
+reviews_per_month → filled with 0
+
+last_review → converted to datetime
+
+This approach prioritizes analytical consistency while preserving business realism.
 
 📈 Business KPIs Created
 
-To support BI analysis, the following calculated fields were introduced:
+To enable structured BI analysis, the following calculated fields were introduced:
 
 📅 Estimated Booked Days
 estimated_booked_days = 365 - availability_365
@@ -69,19 +85,37 @@ Used as a proxy for occupancy.
 💰 Estimated Revenue
 estimated_revenue = price × estimated_booked_days
 
-⚠ Important note:
+⚠ Important Note
+
 This revenue metric is an approximation based on calendar availability.
-It assumes full occupancy on unavailable days and may reflect host blocking behavior rather than actual bookings.
 
-📊 Percentile Metrics
+It assumes:
 
-To manage distribution skew without removing high-end listings:
+Full occupancy on unavailable days
+
+No seasonal pricing variation
+
+No host-side blocking
+
+It provides a comparative revenue indicator, not actual revenue.
+
+📊 Percentile-Based Metrics
+
+To manage skewed distributions without excluding premium listings:
 
 price_percentile
 
 revenue_percentile
 
-These fields allow trimmed analysis (e.g., excluding top 1%) while preserving full dataset integrity.
+These allow:
+
+Trimmed analysis (e.g., excluding top 1%)
+
+Robust segmentation
+
+Outlier-aware dashboards
+
+Preservation of full dataset integrity
 
 📌 Key Initial Findings
 
@@ -91,33 +125,49 @@ Median estimated booked days: 321 days
 
 Median estimated revenue: $25,550
 
+Market structure insights:
+
 Listings are heavily concentrated in:
 
 Manhattan
 
 Brooklyn
 
-Entire home/apartment represents the majority of listings
+Entire home/apartment represents the dominant listing type
 
-The revenue distribution is highly skewed, reinforcing the importance of median-based analysis.
+Revenue distribution is strongly right-skewed
+
+This reinforces the importance of median-based KPIs instead of averages.
 
 🏗 Modeling Strategy (Next Phase)
 
-The next phase will transform the dataset into a reusable star schema independent of any specific BI tool.
+The next phase transforms the dataset into a tool-agnostic star schema, enabling scalable BI usage.
 
 Planned structure:
 
-Fact table: listing metrics
+Fact table
 
-Dimension tables: location, room type, host
+Listing-level metrics
 
-This will allow integration with:
+Revenue indicators
+
+Availability metrics
+
+Dimension tables
+
+Location (borough, neighborhood)
+
+Room type
+
+Host
+
+This structure enables seamless integration with:
 
 Power BI
 
 Tableau
 
-SQL-based analytics platforms
+SQL analytics platforms
 
 Any modern BI environment
 
@@ -127,7 +177,7 @@ Python (Pandas)
 
 VS Code
 
-CSV-based data modeling
+CSV-based intermediate storage
 
 Future dashboard layer (Power BI or equivalent)
 
@@ -135,26 +185,28 @@ Future dashboard layer (Power BI or equivalent)
 
 This project demonstrates:
 
-Data cleaning best practices
+Data validation discipline
 
-KPI definition and justification
+KPI definition governance
 
 Outlier handling strategy
 
-Revenue approximation logic
+Revenue proxy logic transparency
 
-Preparation for dimensional modeling
+BI-oriented analytical modeling
 
-BI-oriented analytical thinking
+Preparation for dimensional architecture
 
-The objective is to build a tool-agnostic, BI-ready analytical dataset, not just perform exploratory analysis.
+The goal is to produce a reusable analytical asset, not just exploratory insights.
 
 🚀 Next Steps
 
 Implement dimensional modeling (star schema)
 
+Add SQL query examples
+
 Develop executive dashboard
 
-Add SQL examples
+Introduce business segmentation (revenue tiers, price buckets)
 
-Provide structured business insights
+Provide structured insight documentation

@@ -12,3 +12,6 @@ print("\nNeighbourhood groups:\n", df["neighbourhood_group"].value_counts())
 
 print("Listings price = 0:", df[df["price"] == 0].shape[0])
 print("Listings price > 1000:", df[df["price"] > 1000].shape[0])
+
+print("\nDuplicates:", df.duplicated().sum())
+print("\nDtypes:\n", df.dtypes)

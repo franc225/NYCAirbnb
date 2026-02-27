@@ -8,3 +8,6 @@ print("Median estimated revenue:", df["estimated_revenue"].median())
 
 print("\nTop 5 revenues:")
 print(df["estimated_revenue"].sort_values(ascending=False).head())
+
+print("\nRevenue by borough:")
+print(df.groupby("neighbourhood_group")["estimated_revenue"].median())

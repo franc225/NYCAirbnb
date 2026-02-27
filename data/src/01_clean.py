@@ -24,6 +24,21 @@ df["estimated_revenue"] = df["price"] * df["estimated_booked_days"]
 df["revenue_percentile"] = df["estimated_revenue"].rank(pct=True)
 df["price_percentile"] = df["price"].rank(pct=True)
 
+df["revenue_tier"] = pd.qcut(
+    df["estimated_revenue"],
+    q=4,
+    labels=["Low", "Mid-Low", "Mid-High", "High"]
+)
+
+df["price_bucket"] = pd.cut(
+    df["price"],
+    bins=[0, 100, 200, 400, 1000],
+    labels=["Budget", "Standard", "Premium", "Luxury"]
+)
+
+upper_cap = df["price"].quantile(0.99)
+df = df[df["price"] <= upper_cap]
+
 # Save
 out_path = OUTDIR / "airbnb_nyc_2019_cleaned.csv"
 df.to_csv(out_path, index=False)
