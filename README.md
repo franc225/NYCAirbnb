@@ -35,6 +35,8 @@ NYCAirbnb/
 │   ├── 00_load_check.py
 │   ├── 01_clean.py
 │   └── 02_kpi_check.py
+│   ├── 03_star_schema.py
+│   └── 04_star_check.py
 │
 ├── data/
 │   └── AB_NYC_2019.csv
@@ -42,6 +44,12 @@ NYCAirbnb/
 ├── outputs/
 │   └── cleaned/
 │       └── airbnb_nyc_2019_cleaned.csv
+│   └── star_schema/
+│       ├── fact_listing_2019.csv
+│       ├── dim_host.csv
+│       ├── dim_location.csv
+│       ├── dim_room_type.csv
+│       └── dim_listing.csv
 │
 ├── README.md
 └── requirements.txt
@@ -51,6 +59,8 @@ NYCAirbnb/
 python src/00_load_check.py
 python src/01_clean.py
 python src/02_kpi_check.py
+python src/03_star_schema.py
+python src/04_star_check.py
 
 📊 Dataset
 
@@ -138,6 +148,57 @@ Outlier-aware dashboards
 
 Preservation of full dataset integrity
 
+🏗 Dimensional Modeling (Star Schema)
+
+The cleaned dataset is transformed into a tool-agnostic star schema.
+
+⭐ Fact Table
+
+fact_listing_2019
+
+Grain:
+1 row = 1 listing (2019 snapshot)
+
+Contains:
+
+Price metrics
+
+Availability metrics
+
+Revenue metrics
+
+Percentile indicators
+
+🧱 Dimension Tables
+
+dim_host
+
+dim_location
+
+dim_room_type
+
+dim_listing
+
+Each dimension uses surrogate keys to ensure BI compatibility and scalability.
+
+✅ Star Schema Validation
+
+04_star_check.py ensures:
+
+Dimension key uniqueness
+
+No null foreign keys in fact table
+
+Referential integrity between fact and dimensions
+
+Revenue calculation consistency
+
+Percentile validity
+
+Business metric sanity checks
+
+This guarantees structural and analytical reliability before dashboard integration.
+
 📌 Key Initial Findings
 
 Median price: $105
@@ -160,37 +221,6 @@ Revenue distribution is strongly right-skewed
 
 This reinforces the importance of median-based KPIs instead of averages.
 
-🏗 Modeling Strategy (Next Phase)
-
-The next phase transforms the dataset into a tool-agnostic star schema, enabling scalable BI usage.
-
-Planned Structure
-Fact Table
-
-Listing-level metrics
-
-Revenue indicators
-
-Availability metrics
-
-Dimension Tables
-
-Location (borough, neighborhood)
-
-Room type
-
-Host
-
-This structure enables seamless integration with:
-
-Power BI
-
-Tableau
-
-SQL analytics platforms
-
-Any modern BI environment
-
 🛠 Tech Stack
 
 Python (Pandas)
@@ -211,22 +241,22 @@ KPI definition governance
 
 Outlier handling strategy
 
-Revenue proxy logic transparency
+Revenue proxy transparency
+
+Star schema implementation
 
 BI-oriented analytical modeling
-
-Preparation for dimensional architecture
 
 The goal is to produce a reusable analytical asset, not just exploratory insights.
 
 🚀 Next Steps
 
-Implement dimensional modeling (star schema)
+Load star schema into SQLite / Postgres
 
-Add SQL query examples
+Provide SQL examples
 
-Develop executive dashboard
+Build executive dashboard
 
-Introduce business segmentation (revenue tiers, price buckets)
+Add segmentation tiers (revenue buckets)
 
-Provide structured insight documentation
+Publish business insight summary
