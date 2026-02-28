@@ -37,11 +37,15 @@ NYCAirbnb/
 │   └── 02_kpi_check.py
 │   ├── 03_star_schema.py
 │   └── 04_star_check.py
+│   ├── 05_load_to_sqlite.py
+│   └── run_pipeline.py
 │
 ├── data/
 │   └── AB_NYC_2019.csv
 │
 ├── outputs/
+│   └── bi/
+│       └── nycairbnb.db
 │   └── cleaned/
 │       └── airbnb_nyc_2019_cleaned.csv
 │   └── star_schema/
@@ -56,11 +60,7 @@ NYCAirbnb/
 
 ▶️ How to Run
 
-python src/00_load_check.py
-python src/01_clean.py
-python src/02_kpi_check.py
-python src/03_star_schema.py
-python src/04_star_check.py
+python src/run_pipeline.py
 
 📊 Dataset
 
@@ -198,6 +198,83 @@ Percentile validity
 Business metric sanity checks
 
 This guarantees structural and analytical reliability before dashboard integration.
+
+                          ┌─────────────────────┐
+                          │      dim_host       │
+                          │─────────────────────│
+                          │ host_key (PK)       │
+                          │ host_id             │
+                          │ host_name           │
+                          │ calculated_host_... │
+                          └──────────┬──────────┘
+                                     │
+                                     │
+┌─────────────────────┐              │              ┌─────────────────────┐
+│   dim_room_type     │              │              │    dim_location     │
+│─────────────────────│              │              │─────────────────────│
+│ room_type_key (PK)  │              │              │ location_key (PK)   │
+│ room_type           │              │              │ neighbourhood_group │
+└──────────┬──────────┘              │              │ neighbourhood       │
+           │                         │              └──────────┬──────────┘
+           │                         │                         │
+           │                         │                         │
+           └──────────────┬──────────┴──────────┬──────────────┘
+                          │                     │
+                          │                     │
+                ┌────────────────────────────────────────┐
+                │           fact_listing_2019            │
+                │────────────────────────────────────────│
+                │ listing_key (PK)                       │
+                │ host_key (FK)                          │
+                │ location_key (FK)                      │
+                │ room_type_key (FK)                     │
+                │                                        │
+                │ price                                  │
+                │ minimum_nights                         │
+                │ number_of_reviews                      │
+                │ reviews_per_month                      │
+                │ availability_365                       │
+                │ estimated_booked_days                  │
+                │ estimated_revenue                      │
+                │ price_percentile                       │
+                │ revenue_percentile                     │
+                │ last_review                            │
+                └────────────────────────────────────────┘
+                          │
+                          │
+                          │
+                ┌─────────────────────┐
+                │    dim_listing      │
+                │─────────────────────│
+                │ listing_key (PK)    │
+                │ id (natural key)    │
+                │ name                │
+                └─────────────────────┘
+				
+- Grain: 1 row in the fact table represents 1 Airbnb listing (2019 snapshot)
+- Surrogate keys are used for all dimensions
+- Fact table contains only measurable metrics and foreign keys
+- Dimensions contain descriptive attributes only
+- The model is fully tool-agnostic and optimized for BI usage
+
+🧰 BI Export (Step 5)
+
+To ensure the star schema is easy to load into BI tools, the project exports the model into a lightweight SQLite database:
+
+- Output: `outputs/bi/nycairbnb.db`
+- Tables:
+  - `fact_listing_2019`
+  - `dim_host`
+  - `dim_location`
+  - `dim_room_type`
+  - `dim_listing`
+
+This enables immediate integration with:
+- Power BI (SQLite connector)
+- Tableau
+- Any SQL-based analytics tool
+
+
 
 📌 Key Initial Findings
 
