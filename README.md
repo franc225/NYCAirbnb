@@ -34,11 +34,15 @@ NYCAirbnb/
 ├── src/
 │   ├── 00_load_check.py
 │   ├── 01_clean.py
-│   └── 02_kpi_check.py
+│   ├── 02_kpi_check.py
 │   ├── 03_star_schema.py
-│   └── 04_star_check.py
+│   ├── 04_star_check.py
 │   ├── 05_load_to_sqlite.py
+│   ├── 06_run_sql_validation.py
 │   └── run_pipeline.py
+│
+├── sql/
+│   └── 06_db_validation_kpi.sql
 │
 ├── data/
 │   └── AB_NYC_2019.csv
@@ -257,7 +261,7 @@ This guarantees structural and analytical reliability before dashboard integrati
 - Dimensions contain descriptive attributes only
 - The model is fully tool-agnostic and optimized for BI usage
 
-🧰 BI Export (Step 5)
+🧰 BI Export
 
 To ensure the star schema is easy to load into BI tools, the project exports the model into a lightweight SQLite database:
 
@@ -274,7 +278,24 @@ This enables immediate integration with:
 - Tableau
 - Any SQL-based analytics tool
 
+🧾 SQL Validation & KPI Reporting
 
+To validate the integrity of the SQLite BI database and display key performance indicators, a full SQL validation script is included:
+sql/06_db_validation_kpi.sql
+
+This script performs:
+
+Schema validation
+
+Foreign key integrity checks
+
+Measure consistency checks
+
+Percentile validation
+
+Core BI KPI queries
+
+Borough and room-type performance summaries
 
 📌 Key Initial Findings
 

@@ -10,6 +10,7 @@ SCRIPTS = [
     "03_star_schema.py",
     "04_star_check.py",
     "05_load_to_sqlite.py",
+    "06_run_sql_validation.py",
 ]
 
 def main():
