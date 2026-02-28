@@ -1,6 +1,11 @@
+from pathlib import Path
 import pandas as pd
 
-path = "data/AB_NYC_2019.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+path = DATA_DIR / "AB_NYC_2019.csv"
 df = pd.read_csv(path)
 
 print("Shape:", df.shape)

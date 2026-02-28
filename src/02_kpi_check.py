@@ -1,6 +1,11 @@
+from pathlib import Path
 import pandas as pd
 
-df = pd.read_csv("outputs/cleaned/airbnb_nyc_2019_cleaned.csv")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+df = pd.read_csv(OUTPUT_DIR / "cleaned" / "airbnb_nyc_2019_cleaned.csv")
 
 print("Median price:", df["price"].median())
 print("Median estimated booked days:", df["estimated_booked_days"].median())

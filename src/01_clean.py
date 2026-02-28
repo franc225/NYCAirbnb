@@ -1,8 +1,12 @@
 import pandas as pd
 from pathlib import Path
 
-INPUT = "data/AB_NYC_2019.csv"
-OUTDIR = Path("outputs/cleaned")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+OUTPUT_DIR = BASE_DIR / "outputs"
+
+INPUT = DATA_DIR / "AB_NYC_2019.csv"
+OUTDIR = OUTPUT_DIR / "cleaned"
 OUTDIR.mkdir(parents=True, exist_ok=True)
 
 df = pd.read_csv(INPUT)

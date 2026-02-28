@@ -1,14 +1,19 @@
-# NYCAirbnb
+🏠 NYCAirbnb
 
-NYCAirbnb
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3.11-blue" />
+  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458" />
+  <img src="https://img.shields.io/badge/Status-In%20Progress-orange" />
+  <img src="https://img.shields.io/badge/License-MIT-green" />
+</p>
 
-🏠 Airbnb NYC 2019 — Business Intelligence Analysis
+Airbnb NYC 2019 — Business Intelligence Analysis
 
 📌 Project Overview
 
 This project analyzes the New York City Airbnb 2019 dataset (Kaggle) using a structured Business Intelligence methodology.
 
-The objectives are to:
+Objectives
 
 Validate and clean raw listing data
 
@@ -22,17 +27,42 @@ Enable integration with any BI platform
 
 The focus is on data preparation, metric governance, and analytical rigor, rather than machine learning.
 
+📂 Project Structure
+
+NYCAirbnb/
+│
+├── src/
+│   ├── 00_load_check.py
+│   ├── 01_clean.py
+│   └── 02_kpi_check.py
+│
+├── data/
+│   └── AB_NYC_2019.csv
+│
+├── outputs/
+│   └── cleaned/
+│       └── airbnb_nyc_2019_cleaned.csv
+│
+├── README.md
+└── requirements.txt
+
+▶️ How to Run
+
+python src/00_load_check.py
+python src/01_clean.py
+python src/02_kpi_check.py
+
 📊 Dataset
 
 Source: AB_NYC_2019.csv (Kaggle)
 
-Initial dataset:
+Initial dataset
 
 48,895 listings
 
 16 columns
 
-After cleaning:
+After cleaning
 
 48,645 listings
 
@@ -42,8 +72,6 @@ Each row represents one Airbnb listing in New York City in 2019.
 
 🧹 Data Cleaning Strategy
 
-The data preparation pipeline applies controlled and justified transformations:
-
 ✔ Duplicate removal
 
 Ensures entity-level uniqueness.
@@ -51,24 +79,20 @@ Ensures entity-level uniqueness.
 ✔ Invalid price filtering
 
 Removed listings where:
-
 price <= 0
+
 ✔ Extreme outlier trimming
 
 Removed listings where:
-
 price > 1000
 
 Represents ~0.5% of the dataset
-
 Stabilizes central tendency metrics
-
 Reduces distortion in revenue estimation
 
 ✔ Missing value handling
 
 reviews_per_month → filled with 0
-
 last_review → converted to datetime
 
 This approach prioritizes analytical consistency while preserving business realism.
@@ -80,13 +104,10 @@ To enable structured BI analysis, the following calculated fields were introduce
 📅 Estimated Booked Days
 estimated_booked_days = 365 - availability_365
 
-Used as a proxy for occupancy.
-
 💰 Estimated Revenue
 estimated_revenue = price × estimated_booked_days
 
 ⚠ Important Note
-
 This revenue metric is an approximation based on calendar availability.
 
 It assumes:
@@ -125,7 +146,7 @@ Median estimated booked days: 321 days
 
 Median estimated revenue: $25,550
 
-Market structure insights:
+Market structure insights
 
 Listings are heavily concentrated in:
 
@@ -143,9 +164,8 @@ This reinforces the importance of median-based KPIs instead of averages.
 
 The next phase transforms the dataset into a tool-agnostic star schema, enabling scalable BI usage.
 
-Planned structure:
-
-Fact table
+Planned Structure
+Fact Table
 
 Listing-level metrics
 
@@ -153,7 +173,7 @@ Revenue indicators
 
 Availability metrics
 
-Dimension tables
+Dimension Tables
 
 Location (borough, neighborhood)
 
