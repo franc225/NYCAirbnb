@@ -2,9 +2,12 @@
 
 <p align="left">
   <img src="https://img.shields.io/badge/Python-3.11-blue" />
-  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458" />
-  <img src="https://img.shields.io/badge/Status-In%20Progress-orange" />
+  <img src="https://img.shields.io/badge/Pandas-Data%20Processing-150458" />
+  <img src="https://img.shields.io/badge/Power%20BI-Dashboard-F2C811" />
+  <img src="https://img.shields.io/badge/SQLite-Database-003B57" />
   <img src="https://img.shields.io/badge/License-MIT-green" />
+  <img src="https://img.shields.io/badge/Model-Star%20Schema-purple" />
+  <img src="https://img.shields.io/badge/Status-Complete-brightgreen" />
 </p>
 
 Airbnb NYC 2019 — Business Intelligence Analysis
@@ -424,6 +427,26 @@ Average revenue comparison across boroughs
 Key insight:
 
 Neighbourhoods such as Williamsburg and Bedford-Stuyvesant show strong revenue potential for new listings.
+
+Geographic Analysis
+
+Two spatial analysis pages were added using latitude and longitude coordinates.
+
+Geographic Insights
+
+Displays the spatial distribution of listings across New York City using a map visualization.
+
+Key observation:
+
+Strong clustering of listings in Manhattan and Brooklyn
+
+Much lower listing density in Bronx and Staten Island
+
+Market Density
+
+A density-style map highlighting areas with the highest concentration of listings and revenue.
+
+This view emphasizes geographic hotspots in the Airbnb marketplace.
 
 🎯 Key Takeaways
 

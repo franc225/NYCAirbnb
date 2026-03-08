@@ -22,14 +22,22 @@ def main():
 
     # ---------- dim_location ----------
     dim_location = (
-        df[["neighbourhood_group", "neighbourhood"]]
-        .drop_duplicates()
-        .sort_values(["neighbourhood_group", "neighbourhood"])
-        .reset_index(drop=True)
+    df.groupby(["neighbourhood_group", "neighbourhood"], as_index=False)
+      .agg({
+          "latitude": "mean",
+          "longitude": "mean"
+      })
+      .sort_values(["neighbourhood_group", "neighbourhood"])
+      .reset_index(drop=True)
+    
     )
     dim_location["location_key"] = range(1, len(dim_location) + 1)
 
-    df = df.merge(dim_location, on=["neighbourhood_group", "neighbourhood"], how="left")
+    df = df.merge(
+    dim_location[["location_key", "neighbourhood_group", "neighbourhood"]],
+    on=["neighbourhood_group", "neighbourhood"],
+    how="left"
+    )   
 
     # ---------- dim_host ----------
     # host_id is already a natural key; we add a surrogate host_key for BI consistency
