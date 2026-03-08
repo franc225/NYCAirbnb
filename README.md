@@ -5,8 +5,8 @@
   <img src="https://img.shields.io/badge/Pandas-Data%20Processing-150458" />
   <img src="https://img.shields.io/badge/Power%20BI-Dashboard-F2C811" />
   <img src="https://img.shields.io/badge/SQLite-Database-003B57" />
-  <img src="https://img.shields.io/badge/License-MIT-green" />
   <img src="https://img.shields.io/badge/Model-Star%20Schema-purple" />
+  <img src="https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-orange" />
   <img src="https://img.shields.io/badge/Status-Complete-brightgreen" />
 </p>
 
