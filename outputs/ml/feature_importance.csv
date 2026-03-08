@@ -1,0 +1,15 @@
+feature,importance
+num__price,0.5491010395063353
+num__availability_365,0.4507430722788852
+num__reviews_per_month,4.3496890139572476e-05
+num__number_of_reviews,4.0932729221635096e-05
+num__minimum_nights,3.409174379875932e-05
+num__calculated_host_listings_count,1.6670041934315247e-05
+cat__neighbourhood_group_Brooklyn,8.057579576315384e-06
+cat__neighbourhood_group_Manhattan,6.2332063203026414e-06
+cat__room_type_Private room,2.2439883045319494e-06
+cat__room_type_Entire home/apt,2.239261759189057e-06
+cat__neighbourhood_group_Queens,1.4326394525115683e-06
+cat__neighbourhood_group_Bronx,2.423790713032617e-07
+cat__room_type_Shared room,1.4312125865320945e-07
+cat__neighbourhood_group_Staten Island,1.0463394250769426e-07
