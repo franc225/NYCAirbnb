@@ -461,3 +461,42 @@ Revenue distribution is highly skewed, reinforcing the use of median metrics
 Optimal pricing appears to fall between $100 and $200 per night
 
 These insights demonstrate how dimensional modeling and BI analysis can transform raw marketplace data into actionable business intelligence.
+
+🤖 Machine Learning Analysis
+
+A predictive modeling layer was implemented using Scikit-Learn to estimate Airbnb listing revenue.
+
+Models evaluated
+
+- Linear Regression
+- Random Forest Regressor
+- Gradient Boosting Regressor
+
+Evaluation metrics
+
+- R²
+- Mean Absolute Error (MAE)
+- Root Mean Squared Error (RMSE)
+
+Results
+
+Random Forest produced the best performance:
+
+| Model | R² | RMSE |
+|------|------|------|
+Random Forest | 0.9998 | ~402 |
+Gradient Boosting | 0.9987 | ~1074 |
+Linear Regression | 0.824 | ~12493 |
+
+Feature importance
+
+The most influential variables were:
+
+- price
+- availability_365
+
+These two variables explain nearly all variance in estimated revenue.
+
+This result is consistent with the revenue proxy formula used in the BI layer:
+
+estimated_revenue = price × estimated_booked_days
