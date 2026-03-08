@@ -347,14 +347,94 @@ BI-oriented analytical modeling
 
 The goal is to produce a reusable analytical asset, not just exploratory insights.
 
-🚀 Next Steps
+📈 Dashboard Structure
 
-Load star schema into SQLite / Postgres
+The Power BI report contains four analytical pages.
 
-Provide SQL examples
+1️⃣ Market Overview (Descriptive Analytics)
 
-Build executive dashboard
+Provides a high-level overview of the Airbnb NYC market.
 
-Add segmentation tiers (revenue buckets)
+Key metrics:
 
-Publish business insight summary
+Total listings
+
+Median listing price
+
+Median estimated revenue
+
+Average booked days
+
+Visualizations:
+
+Total revenue by borough
+
+Listing distribution by room type
+
+Price distribution
+
+Key insight:
+
+Manhattan and Brooklyn dominate the NYC Airbnb market, both in listing volume and revenue generation.
+
+2️⃣ Revenue Drivers (Diagnostic Analytics)
+
+Explores the factors that influence listing revenue.
+
+Visualizations:
+
+Price vs Revenue scatter plot
+
+Average revenue by room type
+
+Borough vs room type performance matrix
+
+Key insight:
+
+Entire home/apartment listings generate significantly higher revenue than private or shared rooms.
+
+3️⃣ Revenue Potential (Predictive Analytics)
+
+Identifies high-performing market segments and potential opportunities.
+
+Visualizations:
+
+High-revenue listings by borough
+
+Revenue percentile distribution
+
+Price vs occupancy analysis
+
+Key insight:
+
+Listings priced between $100–$200 appear to balance pricing and occupancy most effectively.
+
+4️⃣ Strategic Insights (Prescriptive Analytics)
+
+Provides strategic recommendations for potential Airbnb hosts.
+
+Visualizations:
+
+Best room type by borough
+
+Top revenue-generating neighbourhoods
+
+Average revenue comparison across boroughs
+
+Key insight:
+
+Neighbourhoods such as Williamsburg and Bedford-Stuyvesant show strong revenue potential for new listings.
+
+🎯 Key Takeaways
+
+The analysis highlights several structural characteristics of the NYC Airbnb market:
+
+Manhattan dominates total revenue generation
+
+Entire home/apartment listings outperform other room types
+
+Revenue distribution is highly skewed, reinforcing the use of median metrics
+
+Optimal pricing appears to fall between $100 and $200 per night
+
+These insights demonstrate how dimensional modeling and BI analysis can transform raw marketplace data into actionable business intelligence.
